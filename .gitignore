@@ -1,0 +1,9 @@
+node_modules/
+dist/
+out/
+coverage/
+*.log
+*.tsbuildinfo
+.eslintcache
+.DS_Store
+packages/node-macos-disclaim/npm/*/*.node

@@ -1,0 +1,29 @@
+catalogMode: strict
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver@5.7.2
+  - semver@6.3.1
+
+shellEmulator: true
+
+packages:
+  - packages/*
+  - packages/node-macos-disclaim/npm/*
+  - examples/*
+
+allowBuilds:
+  electron: true
+  esbuild: true
+
+catalog:
+  '@antfu/eslint-config': ^9.3.0
+  '@types/node': ^25.0.0
+  bumpp: ^12.2.0
+  electron: ^43.4.1
+  eslint: ^10.5.0
+  eslint-plugin-format: ^2.0.1
+  publint: ^0.3.18
+  tsdown: ^0.22.2
+  typescript: ^6.0.0
+  vitest: ^4.1.0

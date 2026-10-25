@@ -1,0 +1,24 @@
+{
+  "name": "@moeru/node-macos-disclaim-darwin-x64",
+  "version": "0.0.0",
+  "description": "Darwin x64 native addon for @moeru/node-macos-disclaim.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeru-ai/node-macos-disclaim.git",
+    "directory": "packages/node-macos-disclaim/npm/darwin-x64"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "os": ["darwin"],
+  "cpu": ["x64"],
+  "exports": {
+    ".": "./disclaim.node",
+    "./package.json": "./package.json"
+  },
+  "main": "./disclaim.node",
+  "files": [
+    "disclaim.node"
+  ]
+}

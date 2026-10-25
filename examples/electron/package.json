@@ -1,0 +1,23 @@
+{
+  "name": "@moeru/node-macos-disclaim-example-electron",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Electron example that makes the app its own TCC responsible process.",
+  "main": "out/main.mjs",
+  "scripts": {
+    "build": "tsdown",
+    "start": "pnpm build && electron .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@moeru/node-macos-disclaim": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "electron": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

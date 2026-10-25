@@ -1,0 +1,56 @@
+{
+  "name": "@moeru/node-macos-disclaim",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Make a macOS process its own TCC responsible process, so permission prompts show your app and not the app that launched it.",
+  "author": {
+    "name": "Moeru AI Project AIRI Team",
+    "email": "airi@moeru.ai",
+    "url": "https://github.com/moeru-ai"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/moeru-ai/node-macos-disclaim",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeru-ai/node-macos-disclaim.git",
+    "directory": "packages/node-macos-disclaim"
+  },
+  "keywords": [
+    "macos",
+    "tcc",
+    "permissions",
+    "electron",
+    "steam",
+    "posix_spawn",
+    "responsibility"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "build:native": "sh scripts/build-native.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "optionalDependencies": {
+    "@moeru/node-macos-disclaim-darwin-arm64": "workspace:*",
+    "@moeru/node-macos-disclaim-darwin-x64": "workspace:*"
+  }
+}

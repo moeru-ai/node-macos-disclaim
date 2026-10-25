@@ -1,0 +1,108 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    name: Build native addon for ${{ matrix.architecture }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: arm64
+            runner: macos-26
+            target: arm64
+
+          - architecture: x64
+            runner: macos-26-intel
+            target: x86_64
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build native addon
+        env:
+          TARGET_ARCH: ${{ matrix.target }}
+        run: pnpm build:native
+
+      - name: Test native addon
+        run: pnpm test:unit packages
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: native-${{ matrix.architecture }}
+          path: packages/node-macos-disclaim/npm/darwin-${{ matrix.architecture }}/disclaim.node
+
+  publish:
+    name: Publish npm packages
+    needs: native
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      # npm 11.5.1 or later is required for OIDC trusted publishing.
+      - run: npm install -g npm@latest
+
+      - run: pnpm install --frozen-lockfile
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: native-arm64
+          path: packages/node-macos-disclaim/npm/darwin-arm64
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: native-x64
+          path: packages/node-macos-disclaim/npm/darwin-x64
+
+      # Stop the release if an artifact is missing, so no package is published without its addon.
+      - name: Check native addons
+        run: |
+          test -f packages/node-macos-disclaim/npm/darwin-arm64/disclaim.node
+          test -f packages/node-macos-disclaim/npm/darwin-x64/disclaim.node
+
+      - run: pnpm build
+
+      - run: pnpm exec publint packages/node-macos-disclaim
+
+      - name: Verify npm packages
+        run: pnpm -r publish --access public --no-git-checks --dry-run
+
+      - name: Publish npm packages
+        run: pnpm -r publish --access public --no-git-checks
+
+      - run: pnpm dlx changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
