@@ -1,5 +1,5 @@
 {
-  "name": "@moeru/node-macos-disclaim",
+  "name": "node-macos-disclaim",
   "type": "module",
   "version": "0.0.0",
   "description": "Make a macOS process its own TCC responsible process, so permission prompts show your app and not the app that launched it.",
@@ -50,7 +50,7 @@
     "typecheck": "tsc --noEmit"
   },
   "optionalDependencies": {
-    "@moeru/node-macos-disclaim-darwin-arm64": "workspace:*",
-    "@moeru/node-macos-disclaim-darwin-x64": "workspace:*"
+    "@node-macos-disclaim/darwin-arm64": "workspace:*",
+    "@node-macos-disclaim/darwin-x64": "workspace:*"
   }
 }

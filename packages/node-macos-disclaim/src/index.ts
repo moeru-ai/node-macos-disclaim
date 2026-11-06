@@ -108,7 +108,7 @@ function loadBinding(): NativeBinding | undefined {
 
   // The addon for each architecture is an optional dependency with `os` and `cpu` set,
   // so package managers install only the one that matches this machine.
-  const name = `@moeru/node-macos-disclaim-darwin-${process.arch}`
+  const name = `@node-macos-disclaim/darwin-${process.arch}`
   try {
     binding = createRequire(import.meta.url)(name) as NativeBinding
   }

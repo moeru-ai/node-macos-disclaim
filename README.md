@@ -9,7 +9,7 @@ Make a macOS process its own TCC responsible process. Then permission prompts sh
 When Steam, a terminal, or an IDE starts your app, macOS charges the microphone, camera, Accessibility, and screen recording requests of your app to that launcher. The prompt says "Steam.app", and the grant goes to Steam.
 
 ```ts
-import { ensureSelfResponsible } from '@moeru/node-macos-disclaim'
+import { ensureSelfResponsible } from 'node-macos-disclaim'
 
 // At the top of the Electron main process or the Node.js entry.
 ensureSelfResponsible()
@@ -19,11 +19,11 @@ The function re-execs the process in place with the private `responsibility_spaw
 
 ## Packages
 
-| Package                                                        | Use it for                                        |
-| -------------------------------------------------------------- | ------------------------------------------------- |
-| [`@moeru/node-macos-disclaim`](./packages/node-macos-disclaim) | The API for Node.js and the Electron main process |
-| `@moeru/node-macos-disclaim-darwin-arm64`                      | The Node-API addon for Apple silicon              |
-| `@moeru/node-macos-disclaim-darwin-x64`                        | The Node-API addon for Intel Macs                 |
+| Package                                                 | Use it for                                        |
+| ------------------------------------------------------- | ------------------------------------------------- |
+| [`node-macos-disclaim`](./packages/node-macos-disclaim) | The API for Node.js and the Electron main process |
+| `@node-macos-disclaim/darwin-arm64`                     | The Node-API addon for Apple silicon              |
+| `@node-macos-disclaim/darwin-x64`                       | The Node-API addon for Intel Macs                 |
 
 The main package installs only the architecture package that matches the machine. Read the [package README](./packages/node-macos-disclaim/README.md) for the API, the packaging notes, and the limits.
 
@@ -56,9 +56,9 @@ To release, run `pnpm bumpp` and push the tag. The release workflow builds each 
 
 [MIT](./LICENSE)
 
-[npmx-version-src]: https://npmx.dev/api/registry/badge/version/@moeru/node-macos-disclaim
-[npmx-version-href]: https://npmx.dev/@moeru/node-macos-disclaim
-[npmx-downloads-src]: https://npmx.dev/api/registry/badge/downloads-month/@moeru/node-macos-disclaim
-[npmx-downloads-href]: https://npmx.dev/@moeru/node-macos-disclaim
-[license-src]: https://npmx.dev/api/registry/badge/license/@moeru/node-macos-disclaim
+[npmx-version-src]: https://npmx.dev/api/registry/badge/version/node-macos-disclaim
+[npmx-version-href]: https://npmx.dev/node-macos-disclaim
+[npmx-downloads-src]: https://npmx.dev/api/registry/badge/downloads-month/node-macos-disclaim
+[npmx-downloads-href]: https://npmx.dev/node-macos-disclaim
+[license-src]: https://npmx.dev/api/registry/badge/license/node-macos-disclaim
 [license-href]: https://github.com/moeru-ai/node-macos-disclaim/blob/main/LICENSE

@@ -2,8 +2,8 @@ import process from 'node:process'
 
 import { writeSync } from 'node:fs'
 
-import { ensureSelfResponsible, getResponsiblePid } from '@moeru/node-macos-disclaim'
 import { app, BrowserWindow, systemPreferences } from 'electron'
+import { ensureSelfResponsible, getResponsiblePid } from 'node-macos-disclaim'
 
 // Run this before anything else. Code above this line runs twice when the process re-execs.
 ensureSelfResponsible()

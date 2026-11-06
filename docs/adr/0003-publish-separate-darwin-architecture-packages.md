@@ -7,9 +7,9 @@ status: accepted
 The project publishes one main package and two Architecture Packages:
 
 ```text
-@moeru/node-macos-disclaim
-@moeru/node-macos-disclaim-darwin-arm64
-@moeru/node-macos-disclaim-darwin-x64
+node-macos-disclaim
+@node-macos-disclaim/darwin-arm64
+@node-macos-disclaim/darwin-x64
 ```
 
 The main package contains the TypeScript API and no native binary. It lists both Architecture Packages in `optionalDependencies`. All three packages use the same version.

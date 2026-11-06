@@ -1,9 +1,9 @@
-# `@moeru/node-macos-disclaim`
+# `node-macos-disclaim`
 
 Make a macOS process its own TCC responsible process. Then permission prompts show your app, not the app that launched it.
 
 ```ts
-import { ensureSelfResponsible } from '@moeru/node-macos-disclaim'
+import { ensureSelfResponsible } from 'node-macos-disclaim'
 
 ensureSelfResponsible()
 ```
@@ -62,10 +62,10 @@ Do not use it when:
 ## Install
 
 ```sh
-pnpm add @moeru/node-macos-disclaim
+pnpm add node-macos-disclaim
 ```
 
-The addon is in one package for each architecture: `@moeru/node-macos-disclaim-darwin-arm64` and `@moeru/node-macos-disclaim-darwin-x64`. They are optional dependencies with `os` and `cpu` set. Package managers install only the one that matches the machine, and none on Linux or Windows.
+The addon is in one package for each architecture: `@node-macos-disclaim/darwin-arm64` and `@node-macos-disclaim/darwin-x64`. They are optional dependencies with `os` and `cpu` set. Package managers install only the one that matches the machine, and none on Linux or Windows.
 
 Node-API is ABI-stable, so you do not rebuild the addon for each Node.js or Electron version.
 
@@ -76,8 +76,8 @@ Node-API is ABI-stable, so you do not rebuild the addon for each Node.js or Elec
 Call it at the top of the main process entry, before `app.whenReady()`, before you open windows, and before `app.requestSingleInstanceLock()`:
 
 ```ts
-import { ensureSelfResponsible } from '@moeru/node-macos-disclaim'
 import { app } from 'electron'
+import { ensureSelfResponsible } from 'node-macos-disclaim'
 
 ensureSelfResponsible()
 
@@ -96,7 +96,7 @@ Packaging notes:
 ### Node.js
 
 ```ts
-import { ensureSelfResponsible } from '@moeru/node-macos-disclaim'
+import { ensureSelfResponsible } from 'node-macos-disclaim'
 
 ensureSelfResponsible()
 ```
@@ -106,7 +106,7 @@ It keeps `process.execArgv`, so flags such as `--inspect` stay.
 ### Run another executable
 
 ```ts
-import { execDisclaimed } from '@moeru/node-macos-disclaim'
+import { execDisclaimed } from 'node-macos-disclaim'
 
 execDisclaimed('/Applications/YourApp.app/Contents/MacOS/YourApp', ['--from-launcher'])
 ```

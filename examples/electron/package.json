@@ -1,5 +1,5 @@
 {
-  "name": "@moeru/node-macos-disclaim-example-electron",
+  "name": "node-macos-disclaim-example-electron",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@moeru/node-macos-disclaim": "workspace:^"
+    "node-macos-disclaim": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "catalog:",

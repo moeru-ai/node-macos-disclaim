@@ -9,7 +9,7 @@ Start it from a terminal, so the terminal is the inherited responsible process:
 ```sh
 pnpm build:native
 pnpm build
-pnpm --filter @moeru/node-macos-disclaim-example-electron start
+pnpm --filter node-macos-disclaim-example-electron start
 ```
 
 The responsible process is the same as the PID. Without the package, it is the PID of the terminal.
@@ -17,7 +17,7 @@ The responsible process is the same as the PID. Without the package, it is the P
 To see the system prompt, add `--request-microphone`:
 
 ```sh
-pnpm --filter @moeru/node-macos-disclaim-example-electron exec electron . --request-microphone
+pnpm --filter node-macos-disclaim-example-electron exec electron . --request-microphone
 ```
 
 The prompt names Electron, not your terminal.

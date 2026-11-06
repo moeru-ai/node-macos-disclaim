@@ -1,7 +1,7 @@
 {
-  "name": "@moeru/node-macos-disclaim-darwin-arm64",
+  "name": "@node-macos-disclaim/darwin-arm64",
   "version": "0.0.0",
-  "description": "Darwin arm64 native addon for @moeru/node-macos-disclaim.",
+  "description": "Darwin arm64 native addon for node-macos-disclaim.",
   "license": "MIT",
   "repository": {
     "type": "git",
