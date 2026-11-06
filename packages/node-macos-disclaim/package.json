@@ -1,7 +1,7 @@
 {
   "name": "node-macos-disclaim",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Make a macOS process its own TCC responsible process, so permission prompts show your app and not the app that launched it.",
   "author": {
     "name": "Moeru AI Project AIRI Team",
